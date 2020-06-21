@@ -8,6 +8,7 @@
 package com.crio.qeats.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ import lombok.NoArgsConstructor;
 //    "South Indian"
 //  ]
 // }
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Restaurant {
   public String restaurantId;
   public String name;
@@ -44,7 +45,7 @@ public class Restaurant {
   public Double longitude;
   public String opensAt;
   public String closesAt;
-  public String[] attributes;
+  public List<String> attributes;
 
   public String getRestaurantId() {
     return restaurantId;
@@ -110,11 +111,11 @@ public class Restaurant {
     this.closesAt = closesAt;
   }
 
-  public String[] getAttributes() {
+  public List<String> getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(String[] attributes) {
+  public void setAttributes(List<String> attributes) {
     this.attributes = attributes;
   }
 }  
