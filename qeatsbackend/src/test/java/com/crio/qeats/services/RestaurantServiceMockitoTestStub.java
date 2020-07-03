@@ -114,20 +114,26 @@ public class RestaurantServiceMockitoTestStub {
         .when(restaurantRepositoryServiceMock)
         .findAllRestaurantsCloseBy(eq(21.0), eq(31.1), eq(LocalTime.of(19, 0)),
             eq(3.0));
-    GetRestaurantsResponse allRestaurantsCloseByOffPeakHours = spy(new GetRestaurantsResponse());
-    GetRestaurantsResponse allRestaurantsCloseByPeakHours = spy(new GetRestaurantsResponse());
 
+    GetRestaurantsResponse allRestaurantsCloseByOffPeakHours = restaurantService
+        .findAllRestaurantsCloseBy(new GetRestaurantsRequest(20.0, 30.2),
+            LocalTime.of(3, 0));
+        
     // TODO: CRIO_TASK_MODULE_MOCKITO
     //  Call restaurantService.findAllRestaurantsCloseBy with appropriate parameters such that
     //  Both of the mocks created above are called.
     //  Our assessment will verify whether these mocks are called as per the definition.
     //  Refer to the assertions below in order to understand the requirements better.
-    allRestaurantsCloseByOffPeakHours.setRestaurants(restaurantList1);
-    allRestaurantsCloseByPeakHours.setRestaurants(restaurantList2);
+    //allRestaurantsCloseByOffPeakHours.setRestaurants(restaurantList1);
+    //allRestaurantsCloseByPeakHours.setRestaurants(restaurantList2);
+
     assertEquals(2, allRestaurantsCloseByOffPeakHours.getRestaurants().size());
     assertEquals("11", allRestaurantsCloseByOffPeakHours.getRestaurants().get(0).getRestaurantId());
     assertEquals("14", allRestaurantsCloseByOffPeakHours.getRestaurants().get(1).getRestaurantId());
 
+    GetRestaurantsResponse allRestaurantsCloseByPeakHours = restaurantService
+        .findAllRestaurantsCloseBy(new GetRestaurantsRequest(21.0, 31.1),
+            LocalTime.of(19, 0));
 
     assertEquals(2, allRestaurantsCloseByPeakHours.getRestaurants().size());
     assertEquals("12", allRestaurantsCloseByPeakHours.getRestaurants().get(0).getRestaurantId());

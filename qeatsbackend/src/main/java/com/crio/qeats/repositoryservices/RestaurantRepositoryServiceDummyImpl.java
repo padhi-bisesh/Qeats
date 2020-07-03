@@ -14,7 +14,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 
 // CRIO_UNCOMMENT_ONLY_START_MODULE_RESTAURANTSAPI
 // @Service
